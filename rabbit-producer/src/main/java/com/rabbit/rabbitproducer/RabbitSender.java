@@ -45,12 +45,15 @@ public class RabbitSender {
         CorrelationData correlationData = new CorrelationData(UUID.randomUUID().toString());
 
         rabbitTemplate.setConfirmCallback(confirmCallback);
-        rabbitTemplate.convertAndSend("exchange-1", "springboot.rabbit", msg, new MessagePostProcessor() {
+        MessagePostProcessor mpp = new MessagePostProcessor() {
             @Override
             public org.springframework.amqp.core.Message postProcessMessage(org.springframework.amqp.core.Message message) throws AmqpException {
-                return null;
+                System.err.println("----> post to do: " + message);
+                return message;
             }
-        }, correlationData);
+        };
+        rabbitTemplate.convertAndSend("exchange-1", "springboot.rabbit", msg, mpp, correlationData);
+
     }
 
 }
