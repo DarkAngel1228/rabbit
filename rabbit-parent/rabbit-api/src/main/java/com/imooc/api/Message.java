@@ -1,4 +1,4 @@
-package com.imooc;
+package com.imooc.api;
 
 import lombok.Data;
 

@@ -27,7 +27,10 @@ public class AsyncBaseQueue {
                     new java.util.concurrent.RejectedExecutionHandler() {
                         @Override
                         public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
-                            //log.error("async sender is error rejected, runnable: {}, executor: {}", r, executor);
+                            log.error("async sender is error rejected, runnable: {}, executor: {}", r, executor);
                         }
                     });
+    public static void submit(Runnable runnable) {
+        senderAsync.submit(runnable);
+    }
 }

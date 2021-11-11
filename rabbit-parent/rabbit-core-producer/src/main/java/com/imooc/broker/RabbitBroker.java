@@ -1,6 +1,6 @@
 package com.imooc.broker;
 
-import com.imooc.Message;
+import com.imooc.api.Message;
 
 public interface RabbitBroker {
     void rapidSend(Message message);

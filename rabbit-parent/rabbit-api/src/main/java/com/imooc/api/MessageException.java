@@ -1,4 +1,4 @@
-package com.imooc;
+package com.imooc.api;
 
 public class MessageException extends Exception{
     private static final long serialVersionUID = 6347951066190728758L;

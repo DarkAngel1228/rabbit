@@ -1,6 +1,6 @@
 package com.imooc.broker;
 
-import com.imooc.Message;
+import com.imooc.api.Message;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
