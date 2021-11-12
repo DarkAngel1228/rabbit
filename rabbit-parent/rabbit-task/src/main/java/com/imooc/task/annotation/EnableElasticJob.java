@@ -1,0 +1,62 @@
+package com.imooc.task.annotation;
+
+import com.imooc.task.autoconfigure.JobParserAutoConfiguration;
+import org.springframework.context.annotation.Import;
+
+import java.lang.annotation.*;
+
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Inherited
+@Import(JobParserAutoConfiguration.class)
+public @interface EnableElasticJob {
+    String name();	//elasticjob的名称
+
+    String cron() default "";
+
+    int shardingTotalCount() default 1;
+
+    String shardingItemParameters() default "";
+
+    String jobParameter() default "";
+
+    boolean failover() default false; // 是否开启任务执行失效转移
+
+    boolean misfire() default true;
+
+    String description() default "";
+
+    boolean overwrite() default false;
+
+    boolean streamingProcess() default false;
+
+    String scriptCommandLine() default "";
+
+    boolean monitorExecution() default false;
+
+    public int monitorPort() default -1;	//must
+
+    public int maxTimeDiffSeconds() default -1;	//must
+
+    public String jobShardingStrategyClass() default "";	//must
+
+    public int reconcileIntervalMinutes() default 10;	//must
+
+    public String eventTraceRdbDataSource() default "";	//must
+
+    public String listener() default "";	//must
+
+    public boolean disabled() default false;	//must
+
+    public String distributedListener() default "";
+
+    public long startedTimeoutMilliseconds() default Long.MAX_VALUE;	//must
+
+    public long completedTimeoutMilliseconds() default Long.MAX_VALUE;		//must
+
+    public String jobExceptionHandler() default "com.dangdang.ddframe.job.executor.handler.impl.DefaultJobExceptionHandler";
+
+    public String executorServiceHandler() default "com.dangdang.ddframe.job.executor.handler.impl.DefaultExecutorServiceHandler";
+
+}
